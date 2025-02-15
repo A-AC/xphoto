@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="https://a-ac.github.io/webApps/manifestVF.json">
+    <link rel="apple-touch-icon" href="https://a-ac.github.io/webApps/icon.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#141414">
+    <meta name="theme-color" content="#141414">
+    <title>XPhoto</title>
+    <link rel="stylesheet" href="vF.css">
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+<body>
+    <div class="header">
+        <img id="logo" src="xolo.png">
+        <p class="by">by xolo</p>
+        <h1>Photo Editor</h1>
+    </div>
+    
+    <div class="controls" style="text-align: center;">
+        <input type="file" style="margin: 3px;" id="fileInput" accept="image/*">
+        <a id="downloadLink" href="#" style="display: block;">
+            <img id="photo" alt="Uploaded Image" style="display: none;">
+        </a>
+        
+        <p></p>
+        <label for="filter">Filters:</label>
+
+        <select name="Filter" id="filterC">
+            <option value="NONE">None</option>
+            <option value="BN">B, W</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="crazy">Crazy</option>
+        </select>
+
+        <label for="preset">Presets:</label>
+        <select name="Presets" id="presetC">
+            <option value="NONE">None</option>
+            <option value="east">East</option>
+            <option value="noise">Noise</option>
+        </select>
+        
+        <br>
+    </div>
+    <br>
+
+    <div id="settings" class="keen-slider">
+        <div class="keen-slider__slide number-slide0">
+            <label class="container">
+            </label>
+        </div>
+        <div class="keen-slider__slide number-slide1">
+            <label class="container">
+                <img src="0.png" style="width: 60%; height: 60%; border-radius: 50%; position: relative; border: 0px solid #000; z-index: 1000; margin: 20%;">
+                <input type="checkbox" id="exposureC">
+                <span class="checkmark"></span>
+                
+            </label>
+        </div>
+        <div class="keen-slider__slide number-slide2">
+            <label class="container">
+                <img src="1.png" style="width: 60%; height: 60%;border-radius: 50%; position: relative; border: 0px solid #000; z-index: 1000; margin: 20%;">
+                <input type="checkbox" id="noiseIntenseC">
+                <span class="checkmark" ></span>
+            </label>
+        </div>
+        <div class="keen-slider__slide number-slide3">
+            <label class="container">
+                <img src="2.png" style="width: 60%; height: 60%; border-radius: 50%; position: relative; border: 0px solid #000; z-index: 1000; margin: 20%">
+                <input type="checkbox" id="highlightC">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="keen-slider__slide number-slide4">
+            <label class="container">
+                <img src="3.png" style="width: 60%; height: 60%; border-radius: 50%; position: relative; border: 0px solid #000; z-index: 1000; margin: 20%;">
+                <input type="checkbox" id="shadowC">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="keen-slider__slide number-slide4">
+            <label class="container">
+                <img src="4.png" style="width: 60%; height: 60%; border-radius: 50%; position: relative; border: 0px solid #000; z-index: 1000; margin: 20%;">
+                <input type="checkbox" id="sparksC">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="keen-slider__slide number-slide5">
+            <label class="container">
+            </label>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.8.5/keen-slider.min.js"></script>
+    <br>
+
+    <div class="slidersInput">
+        <div class="slidecontainer" style="display: none;" id="slidecontainerExposure">
+            <input type="range" min="-100" max="100" value="0" class="slider" id="exposureS" step="1">
+            <br>
+            <p><span id="exposureSV"></span></p>
+            <label for="exposure">Exposure</label>
+        </div>
+        <div class="slidecontainer" style="display: none;" id="slidecontainerNoiseIntense">
+            <input type="range" min="0" max="200" value="0" class="slider" id="noiseIntenseS" step="1">
+            <br>
+            <p><span id="noiseIntenseSV"></span></p>
+            <label for="noiseIntense">Noise Intencity</label>
+        </div>
+        <div class="slidecontainer" style="display: none;" id="slidecontainerHighlights">
+            <input type="range" min="-150" max="150" value="0" class="slider" id="highlightsS" step="1">
+            <br>
+            <p><span id="highlightsSV"></span></p>
+            <label for="highlights">Highlights</label>
+        </div>
+        <div class="slidecontainer" style="display: none;" id="slidecontainerShadows">
+            <input type="range" min="-150" max="150" value="0" class="slider" id="shadowsS" step="1">
+            <br>
+            <p><span id="shadowsSV"></span></p>
+            <label for="shadows">Shadows</label>
+        </div>
+        <div class="slidecontainer" style="display: none;" id="slidecontainerSparks">
+            <input type="range" min="0" max="10" value="0" class="slider" id="sparksS" step="1">
+            <br>
+            <p><span id="sparksSV"></span></p>
+            <label for="sparks">Sparks</label>
+        </div>
+    </div>
+
+
+    <script>
+        var slider = new KeenSlider("#settings", {
+        breakpoints: {
+            "(min-width: 350px)": {
+            slides: { perView: 3, spacing: 10 },
+            },
+            "(min-width: 390px)": {
+            slides: { perView: 3, spacing: 15 },
+            },
+            "(min-width: 1000px)": {
+            slides: { perView: 9, spacing: 6 },
+            },
+        },
+        slides: { perView: 1 },
+        })
+    </script>
+        
+    <img id="originalPhoto" alt="Uploaded Image" style="display: none;">
+        
+    <script src="vF.js"></script>
+    <!--script src="renderWorker.js"></script-->
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/webApps/serviceWorker.js").then(function(reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+    </script>
+</body>
+</html>

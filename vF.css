@@ -1,0 +1,249 @@
+img {
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #000;
+    max-height: 47vh;
+    width: auto;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+}
+
+.controls{
+    position: fixed;
+    top: 8%;
+    width: 100%;
+
+}
+
+#logo {
+    display: block;
+    border: 0px solid #000;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    max-width: 78px;
+    height: auto;
+    margin: 0px auto;
+}
+
+body {
+    background-color: #141414;
+}
+
+p {
+    margin-top: 0.05em;
+    margin-bottom: 0.01em;
+    color: white;
+}
+
+.by{
+    margin-top: 2px;
+    text-align: left;
+    font-family: monospace;
+}
+
+h1 {
+    text-align: left;
+    margin-top: 0.0em;
+    margin-bottom: 0.0em;
+    color: white;
+    font-family: monospace;
+}
+
+label {
+    color: white;
+    font-family: monospace;
+}
+
+input {
+    color: white;
+}
+
+.slidersInput{
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 87%;
+    right: 0px;
+    left: 0px;
+}
+
+#settings{
+    position: fixed;
+    top: 70vh;
+    right: 0px;
+    left: 0px;
+    text-align: center;
+}
+
+
+.slidecontainer{
+    width: 100%;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    /* Full-width */
+    height: 25px;
+    /* Specified height */
+    background: #4e4e4e;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: #d3d3d3;
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: #d3d3d3;
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.keen-slider:not([data-keen-slider-disabled]) {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    align-content: flex-start;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -khtml-user-select: none;
+    width: 100%
+}
+
+.keen-slider:not([data-keen-slider-disabled]) .keen-slider__slide {
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%
+}
+
+.keen-slider:not([data-keen-slider-disabled])[data-keen-slider-reverse] {
+    flex-direction: row-reverse
+}
+
+.keen-slider:not([data-keen-slider-disabled])[data-keen-slider-v] {
+    flex-wrap: wrap
+}
+
+[class^="number-slide"],
+[class*=" number-slide"] {
+    background: rgba(0, 0, 0, 0.0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 500;
+    height: 14%;
+    max-height: 100vh;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: #e2e2e2;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: #5c5c5c;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle)
+.container .checkmark:after {
+    top: 35px;
+    left: 35px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: white;
+} */
+
