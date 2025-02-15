@@ -1,7 +1,7 @@
 {
     "name": "Xolo Photo Editor",
     "short_name": "XPhoto",
-    "start_url": "xphoto.html",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#141414",
     "theme_color": "#141414",
