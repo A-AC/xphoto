@@ -8,7 +8,7 @@
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "https://a-ac.github.io/webApps/icon.png",
+            "src": "https://a-ac.github.io/xphoto/icon.png",
             "type": "image/png", "sizes": "800x800"
         }
 
