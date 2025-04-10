@@ -1,21 +1,7 @@
-img {
-    display: block;
-    margin: 10px auto;
-    border: 1px solid #000;
-    max-height: 47vh;
-    width: auto;
-}
 
 .header{
     position: fixed;
     width: 100%;
-}
-
-.controls{
-    position: fixed;
-    top: 8%;
-    width: 100%;
-
 }
 
 #logo {
@@ -62,27 +48,6 @@ input {
     color: white;
 }
 
-.slidersInput{
-    text-align: center;
-    width: 100%;
-    position: fixed;
-    top: 87%;
-    right: 0px;
-    left: 0px;
-}
-
-#settings{
-    position: fixed;
-    top: 70vh;
-    right: 0px;
-    left: 0px;
-    text-align: center;
-}
-
-
-.slidecontainer{
-    width: 100%;
-}
 
 /* The slider itself */
 .slider {
@@ -181,28 +146,8 @@ input {
     max-height: 100vh;
 }
 
-/* The container */
-.container {
-    display: block;
-    position: relative;
-    padding-left: 0px;
-    margin-bottom: 0px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    width: 100%;
-    height: 100%;
-}
 
-/* Hide the browser's default radio button */
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
+
 
 /* Create a custom radio button */
 .checkmark {
@@ -214,36 +159,3 @@ input {
     background-color: #e2e2e2;
     border-radius: 50%;
 }
-
-/* On mouse-over, add a grey background color */
-.container:hover input~.checkmark {
-    background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.container input:checked~.checkmark {
-    background-color: #5c5c5c;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.container input:checked~.checkmark:after {
-    display: block;
-}
-
-/* Style the indicator (dot/circle)
-.container .checkmark:after {
-    top: 35px;
-    left: 35px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: white;
-} */
-

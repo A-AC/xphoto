@@ -1,3 +1,7 @@
+function disableControl(control,disabled){
+    control.disabled = disabled;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const fileInput = document.getElementById("fileInput");
     const photo = document.getElementById("photo");
@@ -30,6 +34,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const shadowsSV = document.getElementById("shadowsSV");
     const sparksSV = document.getElementById("sparksSV");
 
+        const exposureB = document.getElementById("exposureB");
+    const noiseIntenseB = document.getElementById("noiseIntenseB");
+    const highlightsB = document.getElementById("highlightB");
+    const shadowsB = document.getElementById("shadowB");
+    const sparksB = document.getElementById("sparksB");
+
+    exposureB.addEventListener("click", function() {
+        exposureC.click();
+    });
+
+    noiseIntenseB.addEventListener("click", function() {
+        noiseIntenseC.click();
+    });
+
+    highlightsB.addEventListener("click", function() {
+        highlightsC.click();
+    });
+
+    shadowsB.addEventListener("click", function() {
+        shadowsC.click();
+    });
+
+    sparksB.addEventListener("click", function() {
+        sparksC.click();
+    });
+
+
 
     exposureSV.innerHTML = exposureS.value;
     noiseIntenseSV.innerHTML = noiseIntenseS.value;
@@ -43,6 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fileInput.addEventListener("change", async (event) => {
         const file = event.target.files[0];
         if (file) {
+            disableControl(filterC,undefined);
+            disableControl(presetC,undefined);
             const imageUrl = URL.createObjectURL(file);
             photo.src = imageUrl;
             originalPh.src = imageUrl;
@@ -66,12 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         }
     });
-
+disableControl(filterC,true);
     filterC.addEventListener("change", async (event)=>{
         await render(originalPh, photo, exposureS.value, filterC.value, presetC.value, noiseIntenseS.value, highlightsS.value, shadowsS.value, sparksS.value);
 
     });
-
+disableControl(presetC,true);
     presetC.addEventListener("change", async (event)=>{
         await render(originalPh, photo, exposureS.value, filterC.value, presetC.value, noiseIntenseS.value, highlightsS.value, shadowsS.value, sparksS.value);
     });
@@ -114,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shadowsC.checked = false;
             sparksC.checked = false;
 
-            exposureSContainer.style.display = "inline-block";
+            exposureSContainer.style.display = "block";
             noiseIntenseSContainer.style.display = "none";
             highlightsSContainer.style.display = "none";
             shadowsSContainer.style.display = "none";
@@ -133,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             sparksC.checked = false;
 
             exposureSContainer.style.display = "none";
-            noiseIntenseSContainer.style.display = "inline-block";
+            noiseIntenseSContainer.style.display = "block";
             highlightsSContainer.style.display = "none";
             shadowsSContainer.style.display = "none";
             sparksSContainer.style.display = "none";
@@ -152,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             exposureSContainer.style.display = "none";
             noiseIntenseSContainer.style.display = "none";
-            highlightsSContainer.style.display = "inline-block";
+            highlightsSContainer.style.display = "block";
             shadowsSContainer.style.display = "none";
             sparksSContainer.style.display = "none";
         } else {
@@ -171,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             exposureSContainer.style.display = "none";
             noiseIntenseSContainer.style.display = "none";
             highlightsSContainer.style.display = "none";
-            shadowsSContainer.style.display = "inline-block";
+            shadowsSContainer.style.display = "block";
             sparksSContainer.style.display = "none";
         } else {
             shadowsSContainer.style.display = "none";
@@ -190,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
             noiseIntenseSContainer.style.display = "none";
             highlightsSContainer.style.display = "none";
             shadowsSContainer.style.display = "none";
-            sparksSContainer.style.display = "inline-block";
+            sparksSContainer.style.display = "block";
         } else {
             sparksSContainer.style.display = "none";
         }
@@ -445,11 +478,11 @@ function highlightsCurve(x, b){
 }
 
 function splitin4Uint8ClampedArray(arr) {
-    var d = arr.length/4;
+    let d = arr.length/4;
 
-    index0 = d;
-    index1 = d*2
-    index2 = d*3
+ let index0 = d;
+ let   index1 = d*2
+ let   index2 = d*3
 
     const firstPart = arr.slice(0, index0);
     const secondPart = arr.slice(index0, index1);
@@ -481,7 +514,7 @@ async function renderWithWorkers(data, exposureV, filter, noiseIntenseV, highlig
 // we turn the worker activation into a promise
 const renderwithworkers = arr => {
     return new Promise((resolve, reject) => {
-        let worker = new Worker('renderWorker.js');
+        let worker = new Worker('./assets/js/renderWorker.js');
         // wait for a message and resolve
         worker.onmessage = ({data}) => resolve(data);
         // if we get an error, reject
