@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isFilterApplied = false;
 
     fileInput.addEventListener("change", async (event) => {
+            setFixedSizeForImage();
         const file = event.target.files[0];
         if (file) {
             disableControl(filterC,undefined);
@@ -539,4 +540,11 @@ const flattenUint8ClampedArrays = (x) => {
 
 function generateDirection(){
     return Math.floor(Math.random()*4);
+}
+
+function setFixedSizeForImage(){
+    const size= document.getElementById("downloadLink").offsetHeight-60;
+    console.log(size);
+    const img = document.getElementById("photo");
+    img.style["max-height"] = size + "px";
 }
