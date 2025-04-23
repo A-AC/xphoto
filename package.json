@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.5"
-  }
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "scripts": {"start": "http-server"}
 }
